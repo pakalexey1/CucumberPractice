@@ -15,10 +15,10 @@ Feature: User should be able to login with correct credentials
     When user enters username "Test", password "Tester" and login
     Then user should see url contains orders
 
-    @wip
+
   Scenario: map data table practice
     When user enters below credentials
-      | username | Test |
+      | username | Test   |
       | password | Tester |
 
 

@@ -1,11 +1,17 @@
 package com.cydeo.steps_definitions;
 
+import com.cydeo.pages.LoginPage;
+import com.cydeo.utilities.BrowserUtils;
+import com.cydeo.utilities.ConfigurationReader;
+import com.cydeo.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class Login_StepDefinitions {
+
+    LoginPage loginPage = new LoginPage();
     @Then("user should see dashboard")
     public void user_should_see_dashboard() {
         System.out.println("User is observing the Dashboard");
@@ -40,5 +46,19 @@ public class Login_StepDefinitions {
         System.out.println("User is entering admin password");
     }
 
+    @When("user enters the {string} information")
+    public void user_enters_the_information(String userType){
+        loginPage.loginDynamic(userType);
+        BrowserUtils.waitFor(5);
+    }
 
+    @Then("user should be able to login")
+    public void user_should_be_able_to_login() {
+
+    }
+
+    @Given("user is on the login page")
+    public void userIsOnTheLoginPage() {
+        Driver.getDriver().get(ConfigurationReader.getProperty("vyTrack.url"));
+    }
 }

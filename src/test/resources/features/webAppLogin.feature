@@ -18,7 +18,7 @@ Feature: User should be able to login with correct credentials
 
   Scenario: map data table practice
     When user enters below credentials
-      | username | Test |
+      | username | Test   |
       | password | Tester |
 
 

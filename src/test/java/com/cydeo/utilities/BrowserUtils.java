@@ -7,6 +7,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class BrowserUtils {
@@ -32,6 +34,27 @@ public class BrowserUtils {
     public static void waitForInvisibility(WebElement element){
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(),10);
         wait.until(ExpectedConditions.invisibilityOf(element));
+    }
+
+    public static List<String> getElementsText(List<WebElement> elements)  {
+
+        List<String> elementsText = new ArrayList<>();
+
+        for (WebElement each : elements){
+            elementsText.add(each.getText());
+        }
+
+        return elementsText;
+    }
+
+    public static void waitFor(int seconds){
+
+        try {
+            Thread.sleep(seconds * 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
     }
 }
 
